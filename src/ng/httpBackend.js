@@ -72,7 +72,6 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
 
       var xhr = createXhr(method, url);
 
-      xhr.open(method, url, true);
       forEach(headers, function(value, key) {
         if (isDefined(value)) {
             xhr.setRequestHeader(key, value);
@@ -141,6 +140,8 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
           }
         }
       }
+
+      xhr.open(method, url, true);
 
       xhr.send(isUndefined(post) ? null : post);
     }
